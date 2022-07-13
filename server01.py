@@ -7,15 +7,18 @@ import sys
 
 #ip address as a loop back and a port number
 
-host="127.0.0.1"
-port=50007
+host = "127.0.0.1" #Local host
+port = 50007 #port number
 
-
-
+#Create a socket
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     s.bind((host,port))
+    #Listening for an incoming message
     s.listen(5)
+
+    clients = []
+    nicknames = []
     conn, addr = s.accept()
     with conn:
         print('Connected by', addr)
